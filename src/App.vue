@@ -1,11 +1,18 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<main-tab-bar></main-tab-bar>
+  <router-view></router-view>
 </template>
 
-<style>
-  @import "assets/css/base.css";
+<script>
+
+  import MainTabBar from "@/components/content/maintabbar/MainTabBar";
+  export default {
+    name: "App",
+    components :{MainTabBar},
+
+}
+</script>
+
+<style scoped>
+ @import "./assets/css/base.css";
 </style>
