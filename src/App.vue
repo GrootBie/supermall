@@ -1,6 +1,14 @@
-<template>
-<main-tab-bar></main-tab-bar>
-  <router-view></router-view>
+<template><div>
+
+<!--  <router-view></router-view>-->
+
+
+<router-view v-slot="{ Component }">
+  <keep-alive exclude="Detail">
+    <component :is="Component"/>
+  </keep-alive>
+</router-view>
+    </div>
 </template>
 
 <script>
