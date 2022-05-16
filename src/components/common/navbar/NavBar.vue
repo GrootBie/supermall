@@ -17,7 +17,17 @@ export default {
   methods:{
     btnclick(){
 
-       isNaN(Number(this.path))?this.$router.push(this.path):this.$router.go(this.path)
+      if (isNaN(Number(this.path))){
+        this.$router.push(this.path)
+      }
+      else {
+        console.log(window.history.state.back);
+        if (window.history.state.back===null){
+          this.$router.push(this.defaultpath)
+        }
+        else {this.$router.go(this.path)}
+      }
+       // isNaN(Number(this.path))?this.$router.push(this.path):this.$router.go(this.path)
 
     }
   },
