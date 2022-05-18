@@ -16,7 +16,6 @@ export default {
   },
   methods:{
     btnclick(){
-
       if (isNaN(Number(this.path))){
         this.$router.push(this.path)
       }

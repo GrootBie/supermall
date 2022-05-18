@@ -1,11 +1,11 @@
 <template>
   <div class="goodsitem">
     <div class="div_img">
-      <img class="img_cla" :src="goodsitem.show.img" @load="imageLoad">
+      <img class="img_cla" :src="goodsitem.image" @load="imageLoad">
     </div>
     <div class="goods-info">
       <p>{{goodsitem.title}}</p>
-      <span class="shanchuprice">{{goodsitem.orgPrice}}</span>
+      <span  v-if="goodsitem.orgPrice" class="shanchuprice">{{goodsitem.orgPrice}}</span>
       <span>{{goodsitem.price}}</span>
       <div class="collect">
         <img :src="require('@/assets/img/fav.svg')">

@@ -1,6 +1,6 @@
 <template>
-  <div class="goodslist">
-    <goods-item @click="goodclick(item.iid)"  v-for="item in goodslist" :goodsitem="item"></goods-item>
+  <div class="goodslist" id="goodslist">
+    <goods-item @click="goodclick(item.item_id)"  v-for="item in goodslist" :goodsitem="item" :key="item.item_id"></goods-item>
   </div>
 </template>
 

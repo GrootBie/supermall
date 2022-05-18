@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-component" @touchstart="onTouchStart" @touchend="onTouchEnd" :style="{height:height}">
+  <div id="swiper" class="swiper-component" @touchstart="onTouchStart" @touchend="onTouchEnd" :style="{height:height}">
 <!--    <img :src="require('@/assets/img/backhome.svg')" @load="imageLoad">-->
 <!--    <ul :style="[ulStyle, swiperStyle]">-->
 <!--      <li v-for="(item, ind) in list" :key="ind" :style="{width: itemWidth + 'px'  ,height:height}" :class="[index===ind?'active':'', effect]" @click="handleClick(item)">-->

@@ -1,5 +1,4 @@
 <template>
-  <div><slot></slot></div>
   <Swiper @swiperImageLoad1="swiperimageload"  :heightdata="swiperheigt" :list="banners"></Swiper>
 </template>
 
@@ -30,17 +29,6 @@ export default {
       }
     }
   },
-  watch:{
-    swiperheigt:{
-     handler(){
-       console.log('ddd')
-     },
-     immediate:true,
-    }
-    }
-
-
-
 }
 </script>
 

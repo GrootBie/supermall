@@ -57,7 +57,12 @@ export default {
     },
     gethomedatahome(type){
      gethomedata(type,this.goods[type].page).then(res=>{
-      this.goods[type].list.push(...res.data.list)
+       const goods_dta_list =  res.data.list.map(res=>{
+         res.image = res.show.img
+         res.item_id = res.iid
+         return res
+       })
+      this.goods[type].list.push(...goods_dta_list)
        this.$refs.scroll.finishPullUp()
     });
      this.goods[type].page+=1
@@ -74,11 +79,12 @@ export default {
       this.isShow=showdic.isshow
       this.styleOption = showdic.styleOption
     },
-
     contentScroll(position) {
       // 1.判断BackTop是否显示
       this.isShowBackTop = (-position.y) > 1000
-
+      console.log('--###########----')
+      console.log(position)
+       console.log('--###########----')
       // 2.决定tabControl是否吸顶(position: fixed)
       this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
@@ -109,16 +115,17 @@ export default {
       isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
-      saveY: 0
+      saveY: 0,
+      itemhomebacklinster:null
 
     }
   },
     unmounted() {
-      console.log('home destroyed');
+      // console.log('home destroyed');
     },
     activated() {
-      console.log('home activated');
-      console.log(this.saveY)
+      // console.log('home activated');
+      // console.log(this.saveY)
 
       this.$refs.scroll.refresh()
       this.$refs.scroll.scrollTo(0, this.saveY, 0)
@@ -126,7 +133,8 @@ export default {
     deactivated() {
       console.log('home deactivated');
       this.saveY = this.$refs.scroll.getScrollY()
-      console.log(this.saveY)
+
+      this.$bus.off('itemImageLoad',this.itemhomebacklinster)
     },
     created() {
      console.log('home created');
@@ -145,9 +153,10 @@ export default {
      mounted() {
       // 1.图片加载完成的事件监听
       const refresh = debounce(this.$refs.scroll.refresh, 50)
-      this.$bus.on('itemImageLoad', () => {
+       this.itemhomebacklinster = () => {
         refresh()
-      });
+      }
+      this.$bus.on('itemImageLoad', this.itemhomebacklinster );
 
     },
 }
@@ -160,18 +169,7 @@ export default {
     /*background-color: red;*/
     position: relative;
   }
-  .nav_class{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-    z-index:1
-
-  }
-  .tab_contal{
-     position: relative;
-    z-index: 9;
-  }
-    .content {
+      .content {
     overflow: hidden;
     position: absolute;
     top: 40px;
@@ -180,4 +178,15 @@ export default {
     right: 0;
       padding-bottom: 44px;
   }
+  .nav_class{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index:1
+  }
+  .tab_contal{
+     position: relative;
+    z-index: 9;
+  }
+
 </style>
