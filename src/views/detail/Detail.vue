@@ -27,6 +27,7 @@
      <goods-list :goodslist="recommend"></goods-list>
   </scroll>
     <BackTop v-show="cc"></BackTop>
+    <BottomCom class="bottomcom"></BottomCom>
 </div>
 </template>
 
@@ -43,11 +44,12 @@ import DetailRateCom from "@/views/detail/childcom/DetailRateCom";
 import GoodsList from "@/components/content/goods/GoodsList";
 import BackTop from "@/components/common/backtop/BackTop";
 import {debounce} from "@/common/utils";
+import BottomCom from "@/components/content/detail/BottomCom";
 export default {
   name: "Detail",
   components:{
     Scroll,
-    NavBar,HomeSwiper,GoodsBase,DetailShopInfo,DetailGoods,DetailParams,DetailRateCom,GoodsList,BackTop
+    NavBar,HomeSwiper,GoodsBase,DetailShopInfo,DetailGoods,DetailParams,DetailRateCom,GoodsList,BackTop,BottomCom
   },
   data(){
     return{
@@ -189,7 +191,7 @@ export default {
   .nav_class{
       position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 0;
     z-index:1
   }
   .detailcontent{
@@ -199,5 +201,14 @@ export default {
   .detailcontent div{
     flex: 1;
     text-align: center;
+  }
+  .bottomcom{
+    background-color: #f6f6f6;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+    height: 49px;
   }
 </style>
