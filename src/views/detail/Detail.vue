@@ -18,7 +18,6 @@
            :probe-type="3"
            class="content"
            :pull-up-load="true">
-     <div>{{$store.state.cart_list}}</div>
      <home-swiper :banners="banner" :swiperheigt="swiperheigt"></home-swiper>
      <goods-base :goods="goods" :key="iid"></goods-base>
      <detail-shop-info :shop="shop"></detail-shop-info>
@@ -98,9 +97,8 @@ export default {
         title :this.goods.title,
         lowPrice:this.goods.lowPrice,
         desc:this.goods.desc,
-        price : this.goods.oldPrice,
+        price : this.goods.lowPrice,
         checked:true,
-
       }
       this.$store.dispatch('add_cart',product)
     }

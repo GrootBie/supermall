@@ -25,7 +25,7 @@
 
 <script>
 // import Toast from "@/components/common/toast/index.ts";
-  import { useToast } from "vue-toastification";
+import { useToast } from "vue-toastification";
 export default {
    setup() {
       // Get toast interface

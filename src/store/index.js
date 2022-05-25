@@ -13,6 +13,11 @@ export default createStore({
     },
     addcard(state,payload){
       state.cart_list[payload.iid]= payload
+    },
+    checkall(state,payload){
+      for(let item in state.cart_list ){
+        state.cart_list[item].checked=payload
+      }
     }
   },
   actions: {

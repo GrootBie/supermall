@@ -3,31 +3,23 @@
   <div class="checkbox_cla">
     <input type="checkbox" :checked="cart_item.checked" @click="checkClick">
   </div>
-
-
   <div class="img_cla">
     <img :src="cart_item.img"  alt="">
   </div>
 
   <div class="text">
-    <h4>{{cart_item.title}}</h4>
+    <h4 @click="intdetail">{{cart_item.title}}</h4>
     <div class="desc">{{cart_item.desc}}</div>
     <div style="" class="price_all">
       <div class="price_cla">{{cart_item.price}}</div>
-      <div class="cal_class"><button @click="delcounter" :disabled="cart_item.count<=0">-</button>
+      <div class="cal_class"><button @click="delcounter" :disabled="cart_item.count<=1">-</button>
       <div>{{cart_item.count}}</div><button @click="incounter" :disabled="cart_item.count>=10">+</button>
     </div>
     </div>
-
-
   </div>
-
-  <div>
-    <div></div>
-    <div></div>
-  </div>
-
 </div>
+
+
 </template>
 
 <script>
@@ -62,6 +54,12 @@ export default {
     checkClick() {
       this.cart_item.checked = !this.cart_item.checked;
     },
+    intdetail(){
+      this.$router.push({
+        name:'detail',
+        params:{iid:this.cart_item.iid}
+      })
+    }
   }
 }
 </script>
