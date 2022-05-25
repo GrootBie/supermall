@@ -1,23 +1,23 @@
 <template>
-  <div class="bottom" @click="btn_click">
-    <div class="img_bottom">
+  <div class="bottom" >
+    <div class="img_bottom" @click="btn_click">
       <img :src="kefu_img"  alt="" class="bottom_img">
       <div>客服</div>
     </div>
 
-    <div class="img_bottom">
+    <div class="img_bottom" @click="btn_click">
       <img :src="dianpu_img"  alt="" class="bottom_img">
       <div>店铺</div>
     </div>
 
-    <div class="img_bottom">
+    <div class="img_bottom" @click="btn_click">
       <img :src="collect_img"  alt="" class="bottom_img">
       <div>收藏</div>
     </div>
-    <div class="bottom_div_text">
+    <div class="bottom_div_text" @click="add_to_cart">
       <div style="background-color: yellow">加入购物车</div>
     </div>
-    <div class="bottom_div_text">
+    <div class="bottom_div_text" @click="btn_click">
         <div style="background-color: red ; color: white">购买</div>
     </div>
   </div>
@@ -47,7 +47,6 @@ export default {
   },
   methods:{
     btn_click(){
-      console.log('aaa')
       this.toast.error("待开发中...",{
          position: "top-center", //出现的位置
         timeout: 2000,
@@ -57,6 +56,9 @@ export default {
         icon:false,
 
       });
+    },
+    add_to_cart(){
+      this.$emit('add_to_cart')
     }
   }
 

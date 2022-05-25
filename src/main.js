@@ -17,7 +17,7 @@ const app = createApp(App)
 app.config.globalProperties.$bus = new mitt();
 app.use(store).use(router).use(Toast,{
     containerClassName: "my-container-class",
-    transition: false,
+    transition: '',
     maxToasts: 10,
     newestOnTop: true}
 ).mount('#app')

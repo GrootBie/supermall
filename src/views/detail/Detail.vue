@@ -18,6 +18,7 @@
            :probe-type="3"
            class="content"
            :pull-up-load="true">
+     <div>{{$store.state.cart_list}}</div>
      <home-swiper :banners="banner" :swiperheigt="swiperheigt"></home-swiper>
      <goods-base :goods="goods" :key="iid"></goods-base>
      <detail-shop-info :shop="shop"></detail-shop-info>
@@ -27,7 +28,7 @@
      <goods-list :goodslist="recommend"></goods-list>
   </scroll>
     <BackTop v-show="cc"></BackTop>
-    <BottomCom class="bottomcom"></BottomCom>
+    <BottomCom class="bottomcom" @add_to_cart="add_to_cart"></BottomCom>
 </div>
 </template>
 
@@ -88,7 +89,20 @@ export default {
       const recommends = document.getElementById('goodslist').offsetTop
       // console.log(recommends)
       this.$refs.scrolldetail.scrollTo(0, -recommends,500)
+    },
+    add_to_cart(){
+      const product = {
+        iid:this.iid,
+        img :this.banner[0].image,
+        // count: 1,
+        title :this.goods.title,
+        lowPrice:this.goods.lowPrice,
+        desc:this.goods.desc,
+        price : this.goods.oldPrice,
+        checked:true,
 
+      }
+      this.$store.dispatch('add_cart',product)
     }
 
   },

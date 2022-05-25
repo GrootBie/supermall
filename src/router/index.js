@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from "@/views/home/Home";
 import Mine from "@/views/Mine";
-const ShopCart = () => import('@/views/ShopCart')
+const ShopCart = () => import('@/views/cart/ShopCart')
 const Detail = () => import('@/views/detail/Detail')
 const routes = [
   {
