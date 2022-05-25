@@ -1,6 +1,6 @@
 <template>
   <div v-for="(item,value) in cart_list">
-    <cart-item :cart_item="item" @calitemcounter="calitemcounter"></cart-item>
+    <cart-item :cart_item="item"></cart-item>
   </div>
 </template>
 
@@ -23,12 +23,6 @@ export default {
         }}
     }
   },
-  methods:{
-    calitemcounter(params){
-      this.$emit('calitemcounter',params)
-      // this.cart_list[iid].count+=1
-    }
-  }
 }
 </script>
 

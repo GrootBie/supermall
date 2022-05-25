@@ -7,7 +7,7 @@
     :probe-type="3"
      class="content"
      :pull-up-load="true">
-    <cart-list :cart_list="cart_list" @calitemcounter="calitemcounter" ></cart-list>
+    <cart-list :cart_list="cart_list" ></cart-list>
     <price-cal @click="getprice_all"  :price_data="getprice_all"></price-cal>
     <div> {{getprice_all}}</div>
 
@@ -62,18 +62,14 @@ export default {
           all_price+=parseFloat((this.cart_list[key].count*parseFloat(this.cart_list[key].lowPrice)).toFixed(2))
         }
       }
-      return {price_all:all_price}
+      return {price_all:all_price.toFixed(2)}
     }
   },
   mounted() {
     this.cart_list = this.$store.state.cart_list
   }
   ,
-  methods:{
-    calitemcounter(params){
-      this.cart_list[params[0]].count=params[1]
-    }
-  }
+
 }
 </script>
 

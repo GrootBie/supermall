@@ -56,8 +56,8 @@ export default {
       this.updatecounter([this.cart_item.iid,counter])
     },
     updatecounter(params){
-      this.$emit('calitemcounter',params)
-      // this.cart_item.count=params[1]
+      // this.$emit('calitemcounter',params)
+      this.cart_item.count=params[1]
     },
     checkClick() {
       this.cart_item.checked = !this.cart_item.checked;
