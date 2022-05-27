@@ -36,7 +36,7 @@ const routes = [
   {
     path: '/category',
     name: 'category',
-    component: ()=>import('@/views/Category'),
+    component: ()=>import('@/views/category/Category'),
     meta:{
       title:'分类'
     }
@@ -54,7 +54,19 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from,next)=>{
-  next()
+  console.log(to.name)
+  if (to.name==='mine'){
+    next()
+  }else {
+     let token = localStorage.getItem('Authorization');
+    if (token === null || token === '') {
+      next('/mine')
+    }
+    else {
+      next()
+    }
+  }
+
   document.title=to.meta.title?'商城-'+to.meta.title:'商城'
 })
 export default router

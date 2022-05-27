@@ -3,7 +3,9 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     homepath:'/home',
-    cart_list :{}
+    cart_list :{},
+    Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : ''
+
   },
   getters: {
   },
@@ -18,6 +20,12 @@ export default createStore({
       for(let item in state.cart_list ){
         state.cart_list[item].checked=payload
       }
+    },
+    changeLogin (state, user) {
+      state.Authorization = user.Authorization;
+      let curTime=new Date().getTime() + 6//默认保存1天==24小时
+// localStorage.setItem('nickname',res.data.nickname,curTime)
+      localStorage.setItem('Authorization', user.Authorization);
     }
   },
   actions: {
